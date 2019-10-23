@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Blank</title>
+  <title>Kasir Techno Ice</title>
 
   <!-- Custom fonts for this template-->
   <link href="<?php echo base_url(); ?>/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -34,9 +34,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+          <i class="fas fa-fw fa-print"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">Kasir<sup>v1</sup></div>
       </a>
 
       <!-- Divider -->
@@ -57,28 +57,48 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         Kategori
       </div>
 
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Contoh</span>
+			<!-- Nav Item - Pages Collapse Menu -->
+			<li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsesatu" aria-expanded="true" aria-controls="collapsesatu">
+          <i class="fas fa-fw fa-print"></i>
+          <span>Kasir</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapsesatu" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Contoh:</h6>
-            <a class="collapse-item" href="buttons.html">Contoh 1</a>
+            <a class="collapse-item" href="buttons.html">Tambahkan Menu</a>
+            <a class="collapse-item" href="cards.html">Contoh 2</a>
+          </div>
+        </div>
+			</li>
+			
+			<li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsedua" aria-expanded="true" aria-controls="collapsedua">
+          <i class="fas fa-fw fa-handshake"></i>
+          <span>Transaksi</span>
+        </a>
+        <div id="collapsedua" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Contoh:</h6>
+            <a class="collapse-item" href="buttons.html">Tambahkan Menu</a>
+            <a class="collapse-item" href="cards.html">Contoh 2</a>
+          </div>
+        </div>
+			</li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsetiga" aria-expanded="true" aria-controls="collapsetiga">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Pengaturan</span>
+        </a>
+        <div id="collapsetiga" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Contoh:</h6>
+            <a class="collapse-item" href="buttons.html">Tambahkan Menu</a>
             <a class="collapse-item" href="cards.html">Contoh 2</a>
           </div>
         </div>
       </li>
-
-      
-
-      
-
-      
-
-      
 
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
@@ -275,4 +295,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </ul>
 
         </nav>
-        <!-- End of Topbar -->
+				<!-- End of Topbar -->
+				<!-- Hak Cipta TechnoIce 2019 -->
