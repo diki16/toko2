@@ -66,7 +66,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div id="collapsesatu" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Contoh:</h6>
-            <a class="collapse-item" href="buttons.html">Tambahkan Menu</a>
+            <a class="collapse-item" href="view_admin.php">Tambahkan Menu</a>
             <a class="collapse-item" href="cards.html">Contoh 2</a>
           </div>
         </div>
@@ -167,7 +167,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <!-- Dropdown - Alerts -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
-                  Alerts Center
+                  Notifikasi
                 </h6>
                 <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="mr-3">
@@ -202,7 +202,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     Spending Alert: We've noticed unusually high spending for your account.
                   </div>
                 </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                <a class="dropdown-item text-center small text-gray-500" href="#">Lihat Semua</a>
               </div>
             </li>
 
@@ -216,7 +216,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <!-- Dropdown - Messages -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                 <h6 class="dropdown-header">
-                  Message Center
+                  Pesan Masuk
                 </h6>
                 <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="dropdown-list-image mr-3">
@@ -258,7 +258,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="small text-gray-500">Chicken the Dog · 2w</div>
                   </div>
                 </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                <a class="dropdown-item text-center small text-gray-500" href="#">Lihat Semua Pesan</a>
               </div>
             </li>
 
@@ -274,24 +274,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
+                  Profil
                 </a>
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
+                  Pengaturan
                 </a>
                 <a class="dropdown-item" href="#">
                   <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
+                  Histori Aktifitas
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
+                  Keluar
                 </a>
               </div>
             </li>
-
+					<!-- Hak Cipta TechnoIce Developer -->
           </ul>
 
         </nav>

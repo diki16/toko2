@@ -5,10 +5,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <footer class="sticky-footer bg-white">
+      <footer class="sticky-footer bg-primary"> <!--menggunakan warna biru(primary) sebagai latar background footer-->
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Techno Ice 2019</span>
+            <span style="color:white">Copyright &copy; Techno Ice 2019</span> <!--menggunakan warna putih untuk text-->
           </div>
         </div>
       </footer>
