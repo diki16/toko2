@@ -61,41 +61,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsesatu" aria-expanded="true" aria-controls="collapsesatu">
           <i class="fas fa-fw fa-print"></i>
-          <span>Kasir</span>
+          <span>User</span>
         </a>
         <div id="collapsesatu" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Contoh:</h6>
-            <a class="collapse-item" href="view_admin.php">Tambahkan Menu</a>
-            <a class="collapse-item" href="cards.html">Contoh 2</a>
+            
+            <a class="collapse-item" href="view_admin.php">Edit Info User</a>
+            
           </div>
         </div>
 			</li>
 			
 			<li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsedua" aria-expanded="true" aria-controls="collapsedua">
-          <i class="fas fa-fw fa-handshake"></i>
-          <span>Transaksi</span>
-        </a>
-        <div id="collapsedua" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Contoh:</h6>
-            <a class="collapse-item" href="buttons.html">Tambahkan Menu</a>
-            <a class="collapse-item" href="cards.html">Contoh 2</a>
-          </div>
-        </div>
-			</li>
+        <a class="nav-link" href="<?php echo base_url()?>/transaksi">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Transaksi</span></a>
+      </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsetiga" aria-expanded="true" aria-controls="collapsetiga">
           <i class="fas fa-fw fa-cog"></i>
-          <span>Pengaturan</span>
+          <span>Master</span>
         </a>
         <div id="collapsetiga" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Contoh:</h6>
-            <a class="collapse-item" href="buttons.html">Tambahkan Menu</a>
-            <a class="collapse-item" href="cards.html">Contoh 2</a>
+            <a class="collapse-item" href="<?php echo base_url()?>skeluar">Stok Keluar</a>
+            <a class="collapse-item" href="<?php echo base_url()?>smasuk">Stok Masuk</a>
+            <a class="collapse-item" href="<?php echo base_url()?>dbarang">Data Barang</a>
+            
           </div>
         </div>
       </li>
