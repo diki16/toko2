@@ -61,12 +61,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsesatu" aria-expanded="true" aria-controls="collapsesatu">
           <i class="fas fa-fw fa-print"></i>
-          <span>User</span>
+          <span>Toko Ku</span>
         </a>
         <div id="collapsesatu" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             
-            <a class="collapse-item" href="view_admin.php">Edit Info User</a>
+            <a class="collapse-item" href="<?php echo base_url();?>toko">Edit Info Toko</a>
             
           </div>
         </div>
@@ -266,7 +266,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="<?php echo base_url();?>User">
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profil
                 </a>
