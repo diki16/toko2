@@ -51,7 +51,7 @@ include 'header.php';
 				</div>
 				<div class="mr-5">11 Transaksi Hari Ini</div>
 				</div>
-				<a class="card-footer text-white clearfix small z-1" href="#">
+				<a class="card-footer text-white clearfix small z-1" href="<?php echo base_url();?>transaksi">
 				<span class="float-left" style="color:black">Lihat Detail</span>
 				<span class="float-right">
 					<i class="fas fa-angle-right" style="color:black"></i>
@@ -67,7 +67,7 @@ include 'header.php';
 				</div>
 				<div class="mr-5">123 Jumlah Stok Barang</div>
 				</div>
-				<a class="card-footer text-white clearfix small z-1" href="#">
+				<a class="card-footer text-white clearfix small z-1" href="<?php echo base_url();?>dbarang">
 				<span class="float-left" style="color:black">Lihat Detail</span>
 				<span class="float-right">
 					<i class="fas fa-angle-right" style="color:black"></i>

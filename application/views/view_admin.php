@@ -46,10 +46,6 @@
 										<br>
 
 
-										<div class="panel panel-default">
-											<div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>
-											<div class="panel-body"><a href="http://bootnipets.com">bootnipets.com</a></div>
-										</div>
 
 										<div class="panel panel-default">
 											<div class="panel-heading">Social Media</div>
