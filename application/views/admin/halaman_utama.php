@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-include 'header.php';
+//include 'header.php';
 ?><!DOCTYPE html>
 
 <!DOCTYPE html>
@@ -173,7 +173,7 @@ include 'header.php';
               </div>
             </div> -->
         <!-- </div> -->
-<?php include 'footer.php';
+<?php // include 'footer.php';
 ?>
 
 

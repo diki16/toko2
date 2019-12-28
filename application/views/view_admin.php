@@ -1,4 +1,4 @@
-<?php include'header.php';
+<?php // include'header.php';
 ?>
 
 <head>
@@ -177,5 +177,5 @@
 </script>
 
 <?php 
-  include 'footer.php';
+ /// include 'footer.php';
   ?>

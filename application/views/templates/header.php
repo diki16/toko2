@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,11 +15,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<title>Kasir Techno Ice</title>
 
 	<!--Link Font Untuk Web Ini-->
-	<link href="<?php echo base_url(); ?>/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
-		type="text/css">
-	<link
-		href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-		rel="stylesheet">
+	<link href="<?php echo base_url(); ?>/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
 	<!--Tampiln CSS Untuk web-->
 	<link href="<?php echo base_url(); ?>/assets/css/sb-admin-2.min.css" rel="stylesheet">
@@ -45,23 +42,66 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<!-- Divider -->
 			<hr class="sidebar-divider my-0">
 
-			<!-- Nav Item - Dashboard -->
-			<li class="nav-item">
-				<a class="nav-link" href="<?php echo base_url();?>HalamanUtama">
-					<i class="fas fa-fw fa-tachometer-alt"></i>
-					<span>Dashboard</span></a>
-			</li>
 
-			<!-- Divider -->
-			<hr class="sidebar-divider">
+			<!-- query menu -->
+			<?php
+			$role_id = $this->session->userdata('role_id');
+			$queryMenu = "SELECT `user_menu`.`id`, `menu`
+											 FROM `user_menu` JOIN `user_access_menu`
+										     ON `user_menu`.`id` = `user_access_menu`.`menu_id`
+										  WHERE `user_access_menu`.`role_id` = $role_id
+									 ORDER BY `user_access_menu`.`menu_id` ASC
+				";
+			$menu = $this->db->query($queryMenu)->result_array();
 
-			<!-- Heading -->
-			<div class="sidebar-heading">
+			?>
+
+
+			<!-- LOOPING MENU -->
+			<?php foreach ($menu as $m) : ?>
+				<div class="sidebar-heading">
+					<?php echo $m['menu']; ?>
+				</div>
+
+				<!-- BUAT NAMPILIN MENU SESUAI MENU CTID -->
+				<?php
+				$menuId = $m['id'];
+				$querySubMenu = "SELECT *
+						FROM `user_sub_menu` JOIN `user_menu`
+						ON `user_sub_menu`.`menu_id` = `user_menu`.`id`
+						WHERE `user_sub_menu`.`menu_id` = $menuId
+						AND `user_sub_menu`.`is_active` = 1
+					";
+				$subMenu = $this->db->query($querySubMenu)->result_array();
+				?>
+
+
+				<?php foreach ($subMenu as $sm) : ?>
+					<?php if ($title == $sm['title']) : ?>
+						<li class="nav-item active">
+						<?php else : ?>
+						<li class="nav-item">
+						<?php endif; ?>
+
+						<a class="nav-link pb-0" href="<?php echo base_url($sm['url']); ?>">
+							<i class="<?php echo $sm['icon']; ?>"></i>
+							<span><?php echo $sm['title']; ?></span></a>
+						</li>
+					<?php endforeach; ?>
+					<hr class="sidebar-divider mt-3">
+				<?php endforeach; ?>
+
+
+				<!-- Divider -->
+
+
+				<!-- Heading -->
+				<!-- <div class="sidebar-heading">
 				Kategori
-			</div>
+			</div> -->
 
-			<!-- Nav Item - Pages Collapse Menu -->
-			<li class="nav-item">
+				<!-- Nav Item - Pages Collapse Menu -->
+				<!-- <li class="nav-item">
 				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsesatu" aria-expanded="true"
 					aria-controls="collapsesatu">
 					<i class="fas fa-fw fa-print"></i>
@@ -70,14 +110,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<div id="collapsesatu" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 
-						<a class="collapse-item" href="<?php echo base_url();?>toko">Edit Info Toko</a>
+						<a class="collapse-item" href="<?php //echo base_url();
+																						?>toko">Edit Info Toko</a>
 
 					</div>
 				</div>
 			</li>
 
 			<li class="nav-item">
-				<a class="nav-link" href="<?php echo base_url()?>/transaksi">
+				<a class="nav-link" href="<?php //echo base_url()
+																	?>/transaksi">
 					<i class="fas fa-fw fa-tachometer-alt"></i>
 					<span>Transaksi</span></a>
 			</li>
@@ -91,18 +133,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<div id="collapsetiga" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Sub Menu:</h6>
-						<a class="collapse-item" href="<?php echo base_url()?>skeluar">Stok Keluar</a>
-						<a class="collapse-item" href="<?php echo base_url()?>smasuk">Stok Masuk</a>
-						<a class="collapse-item" href="<?php echo base_url()?>dbarang">Data Barang</a>
+						<a class="collapse-item" href="<?php echo base_url() ?>skeluar">Stok Keluar</a>
+						<a class="collapse-item" href="<?php echo base_url() ?>smasuk">Stok Masuk</a>
+						<a class="collapse-item" href="<?php echo base_url() ?>dbarang">Data Barang</a>
 
 					</div>
 				</div>
-			</li>
+			</li> -->
 
-			<!-- Sidebar Toggler (Sidebar) -->
-			<div class="text-center d-none d-md-inline">
-				<button class="rounded-circle border-0" id="sidebarToggle"></button>
-			</div>
+				<!-- Sidebar Toggler (Sidebar) -->
+				<div class="text-center d-none d-md-inline">
+					<button class="rounded-circle border-0" id="sidebarToggle"></button>
+				</div>
 
 		</ul>
 		<!-- End of Sidebar -->
@@ -126,17 +168,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 						<!-- Nav Item - Pencarian Dropdown (Hanya Muncul XS) -->
 						<li class="nav-item dropdown no-arrow d-sm-none">
-							<a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false">
+							<a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i class="fas fa-search fa-fw"></i>
 							</a>
 							<!-- Dropdown - Pesan -->
-							<div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-								aria-labelledby="searchDropdown">
+							<div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
 								<form class="form-inline mr-auto w-100 navbar-search">
 									<div class="input-group">
-										<input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-											aria-label="Search" aria-describedby="basic-addon2">
+										<input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
 										<div class="input-group-append">
 											<button class="btn btn-primary" type="button">
 												<i class="fas fa-search fa-sm"></i>
@@ -149,15 +188,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 						<!-- Nav Item  Pemberitahuan-->
 						<li class="nav-item dropdown no-arrow mx-1">
-							<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false">
+							<a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i class="fas fa-bell fa-fw"></i>
 								<!-- Counter - Alerts -->
 								<span class="badge badge-danger badge-counter">3+</span>
 							</a>
 							<!-- Dropdown Pemberitahuan-->
-							<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-								aria-labelledby="alertsDropdown">
+							<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
 								<h6 class="dropdown-header">
 									Notifikasi
 								</h6>
@@ -200,15 +237,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 						<!-- Nav Item Kotak Masuk -->
 						<li class="nav-item dropdown no-arrow mx-1">
-							<a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false">
+							<a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<i class="fas fa-envelope fa-fw"></i>
 								<!-- Counter - Messages -->
 								<span class="badge badge-danger badge-counter">7</span>
 							</a>
 							<!-- Dropdown Kotak Masuk -->
-							<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-								aria-labelledby="messagesDropdown">
+							<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
 								<h6 class="dropdown-header">
 									Pesan Masuk
 								</h6>
@@ -264,14 +299,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 						<!-- Nav Item - User Information -->
 						<li class="nav-item dropdown no-arrow">
-							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-								aria-haspopup="true" aria-expanded="false">
-								<span class="mr-2 d-none d-lg-inline text-gray-600 small">User</span>
-								<img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+							<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $user['nama']; ?></span>
+								<img class="img-profile rounded-circle" src="<?php echo base_url('assets/img/prifile/') . $user['gambar']; ?>">
 							</a>
 							<!-- Dropdown - User Information -->
 							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-								<a class="dropdown-item" href="<?php echo base_url();?>User">
+								<a class="dropdown-item" href="<?php echo base_url(); ?>User">
 									<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
 									Profil
 								</a>
@@ -294,5 +328,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</ul>
 
 				</nav>
+				<!-- Logout Modal-->
+				<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">Yakin ?</h5>
+								<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">×</span>
+								</button>
+							</div>
+							<div class="modal-body">Jika Yakin, Pilih Logout Untuk Keluar.</div>
+							<div class="modal-footer">
+								<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+								<a class="btn btn-primary" href="<?php echo base_url('auth/logout'); ?>">Logout</a>
+							</div>
+						</div>
+					</div>
+				</div>
 				<!--Akhir Untuk Top Bar-->
 				<!-- Hak Cipta TechnoIce 2019 -->

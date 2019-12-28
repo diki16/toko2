@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-include 'header.php';
+//include 'header.php';
 ?>
 <style type="text/css">
     .form_{
@@ -212,7 +212,7 @@ include 'header.php';
               </div>
             </div> -->
         <!-- </div> -->
-<?php include 'footer.php';
+<?php //include 'footer.php';
 ?>
 
 
