@@ -26,7 +26,6 @@ function cek_login()
 
     }
 }
-
   // Dilarang Mengedit codingan ini
   // Kecuali Tim Techno Ice Dev
 

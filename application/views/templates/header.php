@@ -29,10 +29,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 	<div id="wrapper">
 
 		<!-- Untuk Sidebar -->
-		<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+		<ul class="navbar-nav bg-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
 			<!-- Sidebar - Brand -->
-			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('HalamanUtama'); ?>">
 				<div class="sidebar-brand-icon rotate-n-15">
 					<i class="fas fa-fw fa-print"></i>
 				</div>
@@ -156,7 +156,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			<div id="content">
 
 				<!-- Topbar -->
-				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-3 static-top shadow">
 
 					<!-- Sidebar Toggle (Topbar) -->
 					<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -309,14 +309,10 @@ defined('BASEPATH') or exit('No direct script access allowed');
 									<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
 									Profil
 								</a>
-								<a class="dropdown-item" href="#">
+								<!-- <a class="dropdown-item" href="<?php // echo base_url(); ?>User/edit">
 									<i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-									Pengaturan
-								</a>
-								<a class="dropdown-item" href="#">
-									<i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-									Histori Aktifitas
-								</a>
+									Pengaturan Profil
+								</a> -->
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
 									<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

@@ -1,12 +1,16 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Transaksi extends CI_Controller {
+class Transaksi extends CI_Controller
+{
 
 	public function __construct()
 	{
 		parent::__construct();
-		cek_login();
+		if (!$this->session->userdata('email')) {
+			redirect('auth');
+		}
+		//cek_login();
 	}
 
 	public function index()
@@ -16,7 +20,5 @@ class Transaksi extends CI_Controller {
 		$this->load->view('templates/header', $data);
 		$this->load->view('transaksi');
 		$this->load->view('templates/footer', $data);
-		
 	}
-    
 }

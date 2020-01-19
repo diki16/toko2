@@ -3,14 +3,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Dbarang extends CI_Controller {
 
-	public function __construct()
-	{
-		parent::__construct();
-		cek_login();
-    }
+	// public function __construct()
+	// {
+	// 	parent::__construct();
+	// 	cek_login();
+    // }
     
 	public function index()
 	{
+        $data['title'] = 'Barang';
         $this->load->model('barang');
         $barang = $this->barang->all_barang();
         $data = array('barang'=>$barang);

@@ -6,8 +6,11 @@ class Menu extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-    cek_login();
-  }
+		if(!$this->session->userdata('email')){
+			redirect('auth');
+		}
+		//cek_login();
+	}
   
 	public function index()
 	{
