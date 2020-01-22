@@ -11,11 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 <div id="wrapper">
-
-
-
 	<div id="content-wrapper">
-
 		<div class="container-fluid">
 
         <!-- 

@@ -1,21 +1,5 @@
-<?php
-//defined('BASEPATH') OR exit('No direct script access allowed');
-//include 'header.php';
-?>
-<style type="text/css">
-    .form_{
-        padding: 10px;
-    }
-    .button_margin{
-        margin-top: 10px;
-    }
-</style>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-</head>
-<body id="page-top">
+
 <div class="modal" tabindex="-1" role="dialog" id="modal_insert">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -83,11 +67,7 @@
 </div>
 
 <div id="wrapper">
-
-
-
 	<div id="content-wrapper">
-
 		<div class="container-fluid">
 
         <!-- 
@@ -136,27 +116,16 @@
                     
                 </table>
                 
-			</div>
-                    
+			</div>  
             </div>
-			
 		</div>
-
 		</div>
 		<!-- /.container-fluid -->
-
 		<!-- Sticky Footer -->
-
-
 	</div>
 	<!-- /.content-wrapper -->
 
 </div>
-<!-- /#wrapper -->
-<script src="<?php echo base_url()?>/assets/extra_js/jquery.js" type="application/javascript"></script>
-<script src="<?php echo base_url()?>/assets/extra_js/crud.js" type="application/javascript"></script>
-    
-</body>
 </html>
 
 
@@ -212,7 +181,7 @@
               </div>
             </div> -->
         <!-- </div> -->
-<?php //include 'footer.php';
+<?php // include 'footer.php';
 ?>
 
 

@@ -153,46 +153,49 @@ class Auth extends CI_Controller
   //Istilah SMTP Simple Mail Transfer Protocol 
   private function _sendEmail($token, $type)
   {
-      // $config = [
-      //   'protocol' => 'smtp',
-      //   'smtp_host' => 'ssl://smtp.googlemail.com',
-      //   'smtp_user' => 'icetech.official@gmail.com',
-      //   'smtp_pass' => 'passwordnyaicedevcobawe',
-      //   'smtp_port' => 465,
-      //   'mailtype' => 'html',
-      //   'charset' => 'utf-8',
-      //   'newline' => "\r\n"
-      // ];
+    // $config = [
+    //   'protocol' => 'smtp',
+    //   'smtp_host' => 'ssl://smtp.googlemail.com',
+    //   'smtp_user' => 'icetech.official@gmail.com',
+    //   'smtp_pass' => 'passwordnyaicedevcobawe',
+    //   'smtp_port' => 465,
+    //   'mailtype' => 'html',
+    //   'charset' => 'utf-8',
+    //   'newline' => "\r\n"
+    // ];
 
-      $this->load->library('email');
+    $this->load->library('email');
 
-        $config = array();
-        $config['protocol'] = 'smtp';
-        $config['smtp_host'] = 'ssl://smtp.googlemail.com';
-        $config['smtp_user'] = 'icetech.official@gmail.com'; //emil pengirim verifikasinya
-        $config['smtp_pass'] = 'passwordnyaicedevcobawe'; //password
-        $config['smtp_port'] = 465; //port
-        $config['mailtype'] = 'html';
-        $config['charset'] = 'utf-8';
-        $this->email->initialize($config);
+    $config = array();
+    $config['protocol'] = 'smtp';
+    $config['smtp_host'] = 'ssl://smtp.googlemail.com';
+    $config['smtp_user'] = 'icetech.official@gmail.com'; //emil pengirim verifikasinya
+    $config['smtp_pass'] = 'passwordnyaicedevcobawe'; //password
+    $config['smtp_port'] = 465; //port
+    $config['mailtype'] = 'html';
+    $config['charset'] = 'utf-8';
+    $this->email->initialize($config);
 
-        $this->email->set_newline("\r\n");
+    $this->email->set_newline("\r\n");
 
-      $this->load->library('email', $config);
+    $this->load->library('email', $config);
 
-      $this->email->from('icetech.official@gmail.com', 'Techno Ice Developer');
-      $this->email->to($this->input->post('email'));
+    $this->email->from('icetech.official@gmail.com', 'Techno Ice Developer');
+    $this->email->to($this->input->post('email'));
 
-      if($type == 'verifikasi'){
+    if ($type == 'verifikasi') {
       $this->email->subject('Verifikasi Akun');
-      $this->email->message('Klik link ini untuk verifikasi akun kamu : <a href="'. base_url() . 'auth/verifikasi?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Aktifkan</a>');
+      $this->email->message('Klik link ini untuk verifikasi akun kamu : <a href="' . base_url() . 'auth/verifikasi?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Aktifkan</a>');
+    } else if ($type == 'lupa') {
+      $this->email->subject('Reset Password');
+      $this->email->message('Klik link ini untuk reset password akun kamu : <a href="' . base_url() . 'auth/lupapasswords?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Reset Password</a>');
     }
-      if($this->email->send()){
-        return true;
-      } else{
-        echo $this->email->print_debugger();
-        die;
-      };
+    if ($this->email->send()) {
+      return true;
+    } else {
+      echo $this->email->print_debugger();
+      die;
+    };
   }
 
   //fungsi verifikasi
@@ -203,20 +206,20 @@ class Auth extends CI_Controller
 
     $user = $this->db->get_where('user', ['email' => $email])->row_array();
 
-    if($user){
+    if ($user) {
       $user_token = $this->db->get_where('user_token', ['token' => $token])->row_array();
 
-      if($user_token){
-        if(time() ->user_token['date_created'] < (60*60*24)){  //Kalau udah daftar terus selama 24jam gak di aktifasi, email bakal dihapus(kadaluarsa)
-          
+      if ($user_token) {
+        if (time()->user_token['date_created'] < (60 * 60 * 24)) {  //Kalau udah daftar terus selama 24jam gak di aktifasi, email bakal dihapus(kadaluarsa)
+
           $this->db->set('is_active', 1);
           $this->db->where('email', $email);
           $this->db->update('user');
-          
+
           $this->db->delete('user_token', ['email' => $email]);
 
           $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">
-          '. $email .' Telah Aktif! Silahkan Login.
+          ' . $email . ' Telah Aktif! Silahkan Login.
           </div>');
           redirect('auth'); //kalau udah aktif munculin notif ini redirect ke auth(login) 
         } else {
@@ -227,15 +230,15 @@ class Auth extends CI_Controller
           $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">
         Aktifasi akun kamu gagal ! Token Kadaluarsa.
       </div>');
-        redirect('auth');
+          redirect('auth');
         }
-      }else{ //jika token gak ada/ salah
+      } else { //jika token gak ada/ salah
         $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">
         Aktifasi akun kamu gagal ! Token Salah.
       </div>');
         redirect('auth');
       }
-    }else { //Jika email yang didftar enggak sesuai
+    } else { //Jika email yang didftar enggak sesuai
       $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">
       Aktifasi akun kamu gagal ! Email salah.
     </div>');
@@ -258,5 +261,94 @@ class Auth extends CI_Controller
   public function blocked()
   {
     $this->load->view('auth/blocked');
+  }
+
+
+  public function lupapassword()
+  {
+    $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+    if ($this->form_validation->run() == false) {
+
+      $data['title'] = 'Lupa Password';
+      $this->load->view('templates/auth_header');
+      $this->load->view('auth/lupa-password');
+      $this->load->view('templates/auth_footer');
+    } else {
+      $email = $this->input->post('email');
+      $user = $this->db->get_where('user', ['email' => $email, 'is_active' => 1])->row_array();
+
+      if ($user) {
+        $token = base64_encode(random_bytes(32));
+        $user_token = [
+          'email' => $email,
+          'token' => $token,
+          // 'date_created' => time()
+        ];
+
+        $this->db->insert('user_token', $user_token); //query buildernya ci
+        $this->_sendEmail($token, 'lupa');
+
+        $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">
+        Periksa Email kamu untuk reset email kamu </div>');
+        redirect('auth/lupapassword');
+      } else {
+        $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">
+        Email Kamu Belum terdaftar, Atau Aktifkan! </div>');
+        redirect('auth/lupapassword');
+      }
+    }
+  }
+
+  public function lupaPasswords()
+  {
+    $email = $this->input->get('email');
+    $token = $this->input->get('token');
+
+    $user = $this->db->get_where('user', ['email' => $email])->row_array();
+
+    if ($user) {
+      $user_token = $this->db->get_where('user_token', ['token' => $token])->row_array();
+      if ($user_token) {
+        $this->session->set_userdata('lupa_password', 'email');
+        $this->changePassword();
+      } else {
+        $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">
+        Reset Pasword gagal, Token salah! </div>');
+        redirect('auth');
+      }
+    } else {
+      $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">
+      Reset Pasword gagal, Email salah! </div>');
+      redirect('auth');
+    }
+  }
+
+  public function changePassword()
+  {
+    // if(!$this->session->userdata('reset_email')){
+    //   redirect('auth');
+    // }
+
+    $this->form_validation->set_rules('passwoerd1', 'Password', 'trim|required|min_length[3]|mathches[password2]');
+    $this->form_validation->set_rules('passwoerd2', 'Password', 'trim|required|min_length[3]|mathches[password1]');
+    if($this->form_validation->run() == false ){
+      $data['title'] = 'Ganti Password';
+      $this->load->view('templates/auth_header');
+      $this->load->view('auth/ganti-password');
+      $this->load->view('templates/auth_footer');
+    } else {
+      $password = password_hash($this->input->post('password1'), PASSWORD_DEFAULT);
+      $email = $this->session->userdata('reset_email');
+
+      $this->db->set('password', $password);
+      $this->db->where('email', $email);
+      $this->db->update('user');
+
+      $this->session->unset_userdata('reset_email');
+      $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">
+      Password Telah diganti, Silahkan login </div>');
+      redirect('auth');
+    }
+    
   }
 }
